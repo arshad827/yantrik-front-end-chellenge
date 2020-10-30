@@ -1,0 +1,30 @@
+<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active">dashboard</a>
+<div style="padding: 15px 15px">
+  <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select [(ngModel)]="selectValue" (ngModelChange)="onSelect($event)">
+      <mat-option value="topic">Topic</mat-option>
+      <mat-option selected=true value="language">Language</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form_field">
+    <mat-label>Start typing to search(eg: javascript)</mat-label>
+    <input matInput [(ngModel)]="searchValue" (ngModelChange)="getRepoDetails($event)">
+  </mat-form-field>
+
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent = handlePage($event)">
+  </mat-paginator>
+
+  <mat-list role="list" *ngIf="data">
+    <mat-list-item *ngFor="let node of data">
+      <mat-icon mat-list-icon>note</mat-icon>
+      <div mat-line>{{node.name}}</div>
+      <div mat-line> {{node.full_name}} </div>
+      <div mat-line> {{node.full_name}} </div>
+      <div mat-line> <a href="{{node.html_url}}">{{node.html_url}}</a></div>
+    </mat-list-item>
+  </mat-list>
+
+</div>

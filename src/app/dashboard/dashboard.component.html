@@ -1,0 +1,26 @@
+<div class="loading">{{loading}}</div>
+<div style="padding: 15px 15px">
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent = handlePage($event)">
+  </mat-paginator>
+
+
+  <mat-list role="list" *ngIf="data">
+    <div *ngFor="let node of data">
+      <div mat-line>{{node.type}}</div>
+      <div mat-line>{{node.key}}</div>
+
+
+      <mat-list-item *ngFor="let item of node.value.items">
+        <mat-icon mat-list-icon>note</mat-icon>
+        <div mat-line>{{item.name}}</div>
+        <div mat-line> {{item.full_name}} </div>
+        <div mat-line> {{item.full_name}} </div>
+        <div mat-line> <a href="{{item.html_url}}">{{item.html_url}}</a></div>
+      </mat-list-item>
+    </div>
+
+
+
+  </mat-list>
+</div>
